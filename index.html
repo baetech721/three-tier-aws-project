@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<title>login lab</title>
+</head>
+
+
+<body>
+
+<h1>login</h1>
+
+<form id="loginForm">
+
+<a href="profile.html">profile</a>
+<form action="dashboard.html">
+	<label>username:</label>
+<input id="username" type="text">
+<br><br>
+	<label>password:</label>
+<input id="password" type="password">
+	<input type="submit" value="login">
+<br>
+
+<a href="register.html">
+	<button type="button">create account</button>
+</a>
+</form>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+
+	event.preventDefault();
+	
+	const username = document.getElementById("username").value;
+	const password = document.getElementById("password").value;
+	const formData = new URLSearchParams();
+
+	formData.append("username", username);
+	formData.append("password", password);
+
+	const response = await fetch("/api/login", {
+		method: "POST",
+		headers: {
+			"content-type": "application/x-www-form-urlencoded"
+		},
+		body: formData
+	
+	});
+	
+	const data = await response.json();
+
+	console.log(data);
+
+	if (response.ok) {
+		alert("login successful!");
+		window.location.href = "dashboard.html";
+	} else { 
+		alert("Login failed: " + JSON.stringify(data));
+	}
+});
+</script>
+</body>
+</html>

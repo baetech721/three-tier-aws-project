@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<title>register</title>
+</head>
+<body>
+<h2>create account</h2>
+
+<form id="registerForm">
+
+	<label>username:</label>
+	<input type="text" id="username" required>
+	<br><br>
+
+	<label>password:</label>
+	<input type="password" id="password" required>
+
+	<br><br>
+
+	<button type="submit">register</button>
+ </form>
+
+<p>
+	already have an account?
+	<a href="login.html"">login</a>
+</p>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", async function(event) {
+
+	event.preventDefault();
+
+	const username = document.getElementById("username").value;
+	const password = document.getElementById("password").value;
+
+	const response = await fetch("/api/register", {
+		method: "post",
+		headers: {
+			"content-type": "application/json"
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password
+		})
+	});
+	const data = await response.json();
+
+	if (response.ok) {
+		alert("Registration successful");
+		window.location.href = "login.html";
+	} else {
+		alert("Registration failed: " + JSON.stringify(data));
+	}
+
+});
+</script>
+
+</body>
+</html>
