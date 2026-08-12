@@ -1,12 +1,10 @@
 name: My first CI Pipeline
-
 on:
   push:
   pull_request:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: check out code
         uses: actions/checckout@v4
