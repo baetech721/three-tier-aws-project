@@ -28,6 +28,8 @@ jobs:
          run: docker build -t three-tier-api ./api
        - name: Run Docker container
          run: docker run -d -p 8000:8000 --name three-tier-api three-tier-api
+       - name: check running processes
+         run: docker exec three-tier-api ps aux
        - name: check container status
          run: docker ps -a
        - name: CHECK CONTAINER LOGS
