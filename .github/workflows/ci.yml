@@ -26,5 +26,7 @@ jobs:
          run: python "api/test_password.py"
        - name: Build Docker image
          run: docker build -t three-tier-api ./api
+       - name: Run Docker container
+         run: docker run -d -p 8000:8000 --name three-tier-api three-tier-api
        - name: Say hello
          run: echo "My first Github actions workflow works!"
