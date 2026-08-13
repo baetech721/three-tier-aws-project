@@ -12,5 +12,10 @@ jobs:
        - name: Check out code
          uses: actions/checkout@v4
 
+       - name: Set up Python
+         uses: action/setup-python@v5
+         with:
+           python-version: '3.12'
+
        - name: Say hello
          run: echo "My first Github actions workflow works!"
