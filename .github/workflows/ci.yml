@@ -18,6 +18,8 @@ jobs:
            python-version: '3.12'
        - name: Install dependencies
          run: pip install -r api/requirements.txt
+       - name: Run password tests
+         run: python api/test.py
 
        - name: Say hello
          run: echo "My first Github actions workflow works!"
