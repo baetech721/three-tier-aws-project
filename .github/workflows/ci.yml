@@ -33,6 +33,8 @@ jobs:
        - name: CHECK CONTAINER LOGS
          run: docker logs three-tier-api
        - name: Test API
-         run: curl --fail http://localhost:8000
+         run:  | 
+            sleep 5
+            curl --fail http://localhost:8000
        - name: Say hello
          run: echo "My first Github actions workflow works!"
