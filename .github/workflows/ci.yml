@@ -22,5 +22,7 @@ jobs:
          run: python api/test.py
        - name: Run hash test
          run: python "api/test_hash.py"
+       - name: Run password tests 2
+         run: python "api/test_password.py"
        - name: Say hello
          run: echo "My first Github actions workflow works!"
