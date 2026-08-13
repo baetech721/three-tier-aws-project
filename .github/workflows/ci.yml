@@ -30,6 +30,8 @@ jobs:
          run: docker run -d -p 8000:8000 --name three-tier-api three-tier-api
        - name: check running processes
          run: docker exec three-tier-api ps aux
+       - name: Check listening ports
+         run: docker exec three-tier-api python -c "import socket; s=socket.socket(); print('port 8000:', 'OPEN' if s.connect_ex(('127.0.0.1 ,8000)) == 0 else 'CLOSED')"
        - name: check container status
          run: docker ps -a
        - name: CHECK CONTAINER LOGS
