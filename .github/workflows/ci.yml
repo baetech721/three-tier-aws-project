@@ -20,7 +20,7 @@ jobs:
          uses: aws-actions/configure-aws-credentials@v4
          with:
          role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
-           aws-region: us-east-1
+         aws-region: us-east-1
 
        - name: Set up Python
          uses: actions/setup-python@v5
