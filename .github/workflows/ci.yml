@@ -16,9 +16,9 @@ jobs:
        - name: Check out code
          uses: actions/checkout@v4
       
-       - name: Configure AWS vredentials
+       - name: Configure AWS credentials
          uses: aws-actions/configure-aws-credentials@v4
-           role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
+         role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
            aws-region: us-east-1
 
        - name: Set up Python
