@@ -15,7 +15,12 @@ jobs:
      steps:
        - name: Check out code
          uses: actions/checkout@v4
-      
+
+       - name: configure aws credentials
+         uses: aws-actions/configure-aws-credentials@v4
+         with:
+           role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
+           aws-region: us-east-1
        - name: Inspect OIDC claims
          shell: bash
          run: |
