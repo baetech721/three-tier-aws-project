@@ -28,6 +28,11 @@ jobs:
          run: docker build -t three-tier-api ./api
        - name: Run Docker container
          run: docker run -d -p 8000:8000 --name three-tier-api three-tier-api
+       - name: check uvicorn command
+         run: | 
+           docker exec three-tier-api ps aux
+           docker exec three-tier-api cat /proc/1/cmdline | tf '\0' ' ' 
+           echo
        - name: check running processes
          run: docker exec three-tier-api ps aux
        - name: Check listening ports
