@@ -27,3 +27,4 @@ uvicorn==0.51.0
 fastapi
 pwdlib[argon2]
 prometheus_fastapi_instrumentator
+python-multipart
