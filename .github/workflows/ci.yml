@@ -15,6 +15,7 @@ jobs:
      steps:
        - name: Check out code
          uses: actions/checkout@v4
+      
        - name: Configure AWS vredentials
          uses: aws-actions/configure-aws-credentials@v4
            role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
