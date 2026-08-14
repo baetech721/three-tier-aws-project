@@ -53,5 +53,7 @@ jobs:
          run: |
             sleep 5
             curl --fail http://localhost:8000
+       - name: Build Nginx docker image
+         run: docker build -t nginx-test .
        - name: Say hello
          run: echo "My first Github actions workflow works!"
