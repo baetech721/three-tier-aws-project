@@ -49,6 +49,6 @@ jobs:
        - name: Test API
          run: |
             sleep 5
-            curl --fail http://127.0.0.1:8000
+            curl --fail http://three-tier-api:8000
        - name: Say hello
          run: echo "My first Github actions workflow works!"
