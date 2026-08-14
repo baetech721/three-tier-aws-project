@@ -23,7 +23,7 @@ jobs:
            aws-region: us-east-1
        - name: login to amazon ecr
          id: login-ecr
-         uses: awws-actions/amazon-ecr-login@v2
+         uses: aws-actions/amazon-ecr-login@v2
        - name: Inspect OIDC claims
          shell: bash
          run: |
