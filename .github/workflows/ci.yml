@@ -16,11 +16,8 @@ jobs:
        - name: Check out code
          uses: actions/checkout@v4
       
-       - name: Configure AWS credentials
-         uses: aws-actions/configure-aws-credentials@v4
-         with:
-            role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
-            aws-region: us-east-1
+       - name: debug oidc
+         uses: github/actions-oidc-debugger@main
 
        - name: Set up Python
          uses: actions/setup-python@v5
