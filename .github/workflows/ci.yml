@@ -57,5 +57,12 @@ jobs:
          run: docker build -t nginx-test .
        - name: Validate databse compose
          run: docker compose -f database/docker-compose.yml config
+       - name: start database
+         run: docker compose -f database/docker-compose.yml up -d
+       - name: check database
+         run: docker compose -f database/docker-compose.yml ps
+       - name: stop database
+         if: always()
+         run: docker compose -f database/docker-compose.yml down
        - name: Say hello
          run: echo "My first Github actions workflow works!"
