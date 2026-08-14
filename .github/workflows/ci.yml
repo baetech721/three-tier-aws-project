@@ -55,7 +55,7 @@ jobs:
             curl --fail http://localhost:8000
        - name: Build Nginx docker image
          run: docker build -t nginx-test .
-       - name: Build database Docker image
-         run: docker build -t database-test ./database
+       - name: Validate databse compose
+         run: docker compose -f database/docker-compose.yml config
        - name: Say hello
          run: echo "My first Github actions workflow works!"
