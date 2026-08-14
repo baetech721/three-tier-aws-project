@@ -31,7 +31,7 @@ jobs:
        - name: check uvicorn command
          run: | 
            docker exec three-tier-api ps aux
-           docker exec three-tier-api cat /proc/1/cmdline | tf '\0' ' ' 
+           docker exec three-tier-api cat /proc/1/cmdline | tr '\0' ' ' 
            echo
        - name: check running processes
          run: docker exec three-tier-api ps aux
