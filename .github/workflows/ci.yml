@@ -37,7 +37,7 @@ jobs:
        - name: CHECK CONTAINER LOGS
          run: docker logs three-tier-api
        - name: Test API inside container
-         run: docker exec three-tier-api curl --fail http://127.0.0.1:8000'
+         run: docker exec three-tier-api python -c 'import urllib.request; print(urllib.request.urlopen("http://127.0.0.1:8000").status)'
        - name: Test API
          run:  | 
             sleep 5
