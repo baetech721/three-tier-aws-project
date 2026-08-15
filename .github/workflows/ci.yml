@@ -103,5 +103,14 @@ jobs:
          run: |
            docker push \
              ${{ steps.login-ecr.outputs.registry }}/three-tier-api:latest
+       - name: tag nginx image for ecr
+         run: |
+           docker tag nginx-test:latest \
+           ${{ steps.login-ecr.outputs.registry }}/three-tier-web:latest
+       - name: push nginx image to ecr
+         run: |
+            docker push \
+              ${{ steps.login-ecr.outputs.registry }}/three-tier-web:latest
+          
        - name: Say hello
          run: echo "My first Github actions workflow works!"
