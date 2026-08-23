@@ -63,7 +63,6 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y wget
             wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
-         uses: aquasecurity/setup-trivy@v0.2.2
        - name: Scan Docker images
          run: |
             trivy image --severity HIGH,CRITICAL --ignore-unfixed three-tier-api
