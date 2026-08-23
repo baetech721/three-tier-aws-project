@@ -65,8 +65,8 @@ jobs:
             wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
        - name: Scan Docker images
          run: |
-            trivy image --severity HIGH,CRITICAL three-tier-api
-            trivy image --severity HIGH,CRITICAL nginx-test
+            trivy image --severity HIGH,CRITICAL --format table three-tier-api
+            trivy image --severity HIGH,CRITICAL --format table nginx-test
        - name: Validate databse compose
          run: docker compose -f database/docker-compose.yml config
        - name: start database
