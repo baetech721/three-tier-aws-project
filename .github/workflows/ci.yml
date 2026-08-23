@@ -58,6 +58,12 @@ jobs:
             curl --fail http://localhost:8000
        - name: Build Nginx docker image
          run: docker build -t nginx-test .
+       - name: install trivy
+         uses: aquasecurity/setup-trivy@v0.2.2
+       - name: Scan Docker images
+         run: |
+            trivy image --severity HIGH,CRITICAL --ignore-unfixed three-tier-api
+            trivy image --severity HIGH,CRITICAL --ignore-unfixed nginx-test
        - name: Validate databse compose
          run: docker compose -f database/docker-compose.yml config
        - name: start database
