@@ -76,14 +76,6 @@ jobs:
        - name: stop database
          if: always()
          run: docker compose -f database/docker-compose.yml down
-       - name: configure aws credentials
-         uses: aws-actions/configure-aws-credentials@v4
-         with:
-           role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
-           aws-region: us-east-1
-       - name: login to amazon ecr
-         id: login-ecr
-         uses: aws-actions/amazon-ecr-login@v2
        - name: Inspect OIDC claims
          shell: bash
          run: |
@@ -104,6 +96,15 @@ jobs:
             repository_owner_id,
             ref
             }'
+       - name: configure aws credentials
+         uses: aws-actions/configure-aws-credentials@v4
+         with:
+           role-to-assume: arn:aws:iam::298712671997:role/githubaction-ecr-deploy
+           aws-region: us-east-1
+       - name: login to amazon ecr
+         id: login-ecr
+         uses: aws-actions/amazon-ecr-login@v2
+       
        - name: tag docker image for ecr 
          run: |
            docker tag three-tier-api:latest \
